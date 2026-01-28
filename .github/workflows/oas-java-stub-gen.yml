@@ -8,6 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: maven:3.9.12-eclipse-temurin-25-noble
+    permissions:
+      contents: read
+      packages: write
     env:
       MAVEN_OPTS: -Dmaven.repo.local=${{ github.workspace }}/.m2/repository
       ARCHETYPE_GROUP_ID: com.obdx.oas-generator-archetype
@@ -53,10 +56,11 @@ jobs:
             -Dname=oas-stubs \
             -Dversion=0.0.1-SNAPSHOT \
             -DinteractiveMode=false \
+            -DgithubRepo=${{ github.repository }} \
             -s ci_settings.xml
 
       - name: Copy OpenAPI spec
-        run: cp openapi.yaml ${{ github.workspace }}/dog-trainer-pack
+        run: cp openapi.yaml ${{ github.workspace }}/oas-stubs
 
       - name: Deploy
-        run: mvn -f ${{ github.workspace }}/dog-trainer-pack/pom.xml clean deploy -s ${{ github.workspace }}/dog-trainer-pack/ci_settings.xml
+        run: mvn -f ${{ github.workspace }}/oas-stubs/pom.xml clean deploy -s ${{ github.workspace }}/oas-stubs/ci_settings.xml
