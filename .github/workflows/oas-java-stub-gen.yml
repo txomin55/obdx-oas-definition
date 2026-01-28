@@ -6,6 +6,8 @@ on:
 jobs:
   generate-java-stubs:
     runs-on: ubuntu-latest
+    container:
+      image: maven:3.9.12-eclipse-temurin-25-noble
     env:
       MAVEN_OPTS: -Dmaven.repo.local=${{ github.workspace }}/.m2/repository
       ARCHETYPE_GROUP_ID: com.obdx.oas-generator-archetype
@@ -19,12 +21,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Java 25
-        uses: actions/setup-java@v4
+      - name: Cache Maven repo
+        uses: actions/cache@v4
         with:
-          distribution: "temurin"
-          java-version: "25"
-          cache: "maven"
+          path: .m2/repository
+          key: m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            m2-
 
       - name: Fetch archetype
         run: |
