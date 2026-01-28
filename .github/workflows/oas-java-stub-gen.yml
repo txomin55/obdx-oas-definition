@@ -13,8 +13,8 @@ jobs:
       ARCHETYPE_GROUP_ID: com.obdx.oas-generator-archetype
       ARCHETYPE_ARTIFACT_ID: oas-generator-archetype
       ARCHETYPE_VERSION: 1.0.0
-      ARCHETYPE_PACKAGES_URL: https://github.com/txomin55/obdx-oas-generator-archetype/packages
-      GITHUB_PACKAGES_URL: https://github.com/txomin55/obdx-oas-definition/packages
+      ARCHETYPE_PACKAGES_URL: https://maven.pkg.github.com/txomin55/obdx-oas-generator-archetype
+      GITHUB_PACKAGES_URL: https://maven.pkg.github.com/txomin55/obdx-oas-definition
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GITHUB_ACTOR: ${{ github.actor }}
     steps:
