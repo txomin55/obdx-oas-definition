@@ -46,6 +46,7 @@ jobs:
             -s ci_settings.xml
 
       - name: Generate project
+        working-directory: ${{ github.workspace }}
         run: |
           mvn archetype:generate -B \
             -DarchetypeGroupId=$ARCHETYPE_GROUP_ID \
@@ -57,6 +58,7 @@ jobs:
             -Dversion=0.0.1-SNAPSHOT \
             -DinteractiveMode=false \
             -DgithubRepo=${{ github.repository }} \
+            -DoutputDirectory=${{ github.workspace }} \
             -s ci_settings.xml
 
       - name: List generated files
