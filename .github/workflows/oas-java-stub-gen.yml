@@ -28,7 +28,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: .m2/repository
-          key: m2-${{ hashFiles('**/pom.xml') }}
+          key: m2-${{ env.ARCHETYPE_VERSION }}
           restore-keys: |
             m2-
 
@@ -58,6 +58,9 @@ jobs:
             -DinteractiveMode=false \
             -DgithubRepo=${{ github.repository }} \
             -s ci_settings.xml
+
+      - name: List generated files
+        run: ls -la ${{ github.workspace }}
 
       - name: Copy OpenAPI spec
         run: cp openapi.yaml ${{ github.workspace }}/oas-stubs
