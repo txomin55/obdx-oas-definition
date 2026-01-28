@@ -1,0 +1,19 @@
+{
+  "collapseTableOfContents": false,
+  "items": [
+    {
+      "type": "item",
+      "title": "All you need to know",
+      "uri": "docs/docs.md"
+    },
+    {
+      "type": "divider",
+      "title": "APIS"
+    },
+    {
+      "type": "item",
+      "title": "T-Manager-Dog-Trainer Pack API",
+      "uri": "/openapi.yaml"
+    }
+  ]
+}
