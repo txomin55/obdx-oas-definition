@@ -9,8 +9,6 @@ on:
 jobs:
   generate-java-stubs:
     runs-on: ubuntu-latest
-    container:
-      image: maven:3.9.12-eclipse-temurin-25-noble
     permissions:
       contents: read
       packages: write
