@@ -61,4 +61,5 @@ jobs:
         run: cp openapi.yaml ${{ github.workspace }}/oas-definition-stubs
 
       - name: Deploy
-        run: mvn -f ${{ github.workspace }}/oas-definition-stubs/pom.xml clean deploy -s ${{ github.workspace }}/oas-definition-stubs/ci_settings.xml
+        working-directory: ${{ github.workspace }}/oas-definition-stubs
+        run: mvn clean deploy -s ${{ github.workspace }}/ci_settings.xml
