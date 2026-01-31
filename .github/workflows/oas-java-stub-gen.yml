@@ -21,7 +21,7 @@ jobs:
       GITHUB_PACKAGES_URL: https://maven.pkg.github.com/txomin55/k9x-oas-definition
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GITHUB_ACTOR: ${{ github.actor }}
-      MODULE_NAME: "OBDX OAS STUBS"
+      MODULE_NAME: OBDX
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -61,5 +61,4 @@ jobs:
         run: cp openapi.yaml ${{ github.workspace }}/oas-definition-stubs
 
       - name: Deploy
-        working-directory: ${{ github.workspace }}/oas-definition-stubs
-        run: mvn clean deploy -s ${{ github.workspace }}/ci_settings.xml
+        run: mvn -f ${{ github.workspace }}/oas-definition-stubs/pom.xml clean deploy -s ${{ github.workspace }}/oas-definition-stubs/ci_settings.xml
