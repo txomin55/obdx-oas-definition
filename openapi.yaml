@@ -1,6 +1,4 @@
 openapi: 3.0.1
-x-stoplight:
-  id: irsv7m1yu2fwn
 info:
   title: OBDX API
   description: OBDX API Documentation
@@ -40,64 +38,6 @@ paths:
                   $ref: '#/components/schemas/GetDogListWeb'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
-  /api/verify:
-    get:
-      tags:
-        - verify
-      operationId: verify
-      parameters:
-        - in: header
-          name: Authorization
-          description: JWT format bearer for Authorization header
-          required: true
-          schema:
-            type: string
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: string
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-  /login:
-    post:
-      tags:
-        - login
-      operationId: login
-      responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: string
-  /api/masters/user:
-    get:
-      tags:
-        - getUserData
-      operationId: getUserData
-      parameters:
-        - in: header
-          name: Authorization
-          description: JWT format bearer for Authorization header
-          required: true
-          schema:
-            type: string
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DogTrainerUserDetails'
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
   '/api/masters/dogs/{id}':
     get:
       tags:
@@ -126,41 +66,6 @@ paths:
                 $ref: '#/components/schemas/GetDogWeb'
         '401':
           $ref: '#/components/responses/UnauthorizedError'
-  /api/logout:
-    get:
-      tags:
-        - logout
-      operationId: logout
-      parameters:
-        - in: header
-          name: Authorization
-          description: JWT format bearer for Authorization header
-          required: true
-          schema:
-            type: string
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: OK
-          content:
-            '*/*':
-              schema:
-                type: string
-        '401':
-          $ref: '#/components/responses/UnauthorizedError'
-  /loginUrl:
-    get:
-      tags:
-        - loginUrl
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LoginUrlWeb'
-      operationId: loginUrl
 components:
   securitySchemes:
     bearerAuth:
@@ -185,15 +90,6 @@ components:
           type: string
         image:
           type: string
-    DogTrainerUserDetails:
-      type: object
-      properties:
-        owner:
-          type: string
-        organizations:
-          type: array
-          items:
-            type: string
     GetDogListWeb:
       type: object
       properties:
@@ -204,13 +100,3 @@ components:
           x-faker: name.firstName
         image:
           type: string
-    LoginUrlWeb:
-      title: LoginUrlWeb
-      x-stoplight:
-        id: 2oyw7r616bktz
-      type: object
-      properties:
-        url:
-          type: string
-      required:
-        - url

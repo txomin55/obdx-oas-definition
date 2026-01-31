@@ -40,12 +40,6 @@ jobs:
             -DremoteRepositories=github::::$ARCHETYPE_PACKAGES_URL \
             -s ci_settings.xml
 
-      # - name: Update local archetype catalog
-      #   run: |
-      #     mvn -f ${{ github.workspace }}/.m2/repository/com/obdx/oas-generator-archetype/$ARCHETYPE_ARTIFACT_ID/$ARCHETYPE_VERSION/$ARCHETYPE_ARTIFACT_ID-$ARCHETYPE_VERSION.pom \
-      #       archetype:update-local-catalog \
-      #       -s ci_settings.xml
-
       - name: Generate project
         working-directory: ${{ github.workspace }}
         run: |
