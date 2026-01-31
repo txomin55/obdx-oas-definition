@@ -14,11 +14,11 @@ jobs:
       packages: write
     env:
       MAVEN_OPTS: -Dmaven.repo.local=${{ github.workspace }}/.m2/repository
-      ARCHETYPE_GROUP_ID: com.obdx
+      ARCHETYPE_GROUP_ID: com.k9x
       ARCHETYPE_ARTIFACT_ID: oas-generator-archetype
       ARCHETYPE_VERSION: 1.0.0
-      ARCHETYPE_PACKAGES_URL: https://maven.pkg.github.com/txomin55/obdx-oas-generator-archetype
-      GITHUB_PACKAGES_URL: https://maven.pkg.github.com/txomin55/obdx-oas-definition
+      ARCHETYPE_PACKAGES_URL: https://maven.pkg.github.com/txomin55/k9x-oas-generator-archetype
+      GITHUB_PACKAGES_URL: https://maven.pkg.github.com/txomin55/k9x-oas-definition
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       GITHUB_ACTOR: ${{ github.actor }}
     steps:
